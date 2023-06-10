@@ -1,0 +1,43 @@
+{
+    "users": [
+      {
+        "id": 1,
+        "name": "Ankush",
+        "email": "ankush@gmail.com",
+        "password": "ankush123",
+        "posts": [
+          {
+            "id": 1,
+            "caption": "First post",
+            "image": "first_post.jpg"
+          },
+          {
+            "id": 2,
+            "caption": "Second post",
+            "image": "second_post.jpg"
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "name": "Roshan",
+        "email": "Roshan@gmail.com",
+        "password": "Roshan123",
+        "posts": [
+          {
+            "id": 3,
+            "caption": "Hello world",
+            "image": "hello_world.jpg"
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "name": "Bishal",
+        "email": "bishal@gmail.com",
+        "password": "bishal123",
+        "posts": []
+      }
+    ]
+  }
+  
