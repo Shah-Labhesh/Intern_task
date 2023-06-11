@@ -21,7 +21,7 @@ class Forecast {
     return Forecast(
       country: map['location']['country'] as String,
       weatherList: List<Weather>.from(
-        (map['forecast']['forecastday'] as List<int>).map<Weather>(
+        (map['forecast']['forecastday'] as List).map<Weather>(
           (x) => Weather.fromMap(x as Map<String, dynamic>),
         ),
       ),
