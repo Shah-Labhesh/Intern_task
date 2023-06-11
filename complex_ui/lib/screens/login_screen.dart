@@ -32,6 +32,8 @@ class _LoginScreenState extends State<LoginScreen> {
     var userData = data["users"];
     UserModel.user =
         List.from(userData).map((user) => Users.fromJson(user)).toList();
+
+    print(UserModel.user.length);
   }
 
   void loginValidate() async {

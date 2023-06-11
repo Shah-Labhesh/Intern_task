@@ -1,4 +1,5 @@
 import 'package:complex_ui/screens/create_post_screen.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class NavBar extends StatefulWidget {
@@ -9,38 +10,28 @@ class NavBar extends StatefulWidget {
 }
 
 class _NavBarState extends State<NavBar> {
-  int _selectedIndex = 0;
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-
-    if (_selectedIndex == 0) {
-      Navigator.pushNamed(context, '/home');
-    } else if (_selectedIndex == 1) {
-      Navigator.pushNamed(context, '/home');
-      MyButtomSheet.showButtomSheet(context);
-    } else if (_selectedIndex == 2) {
-      Navigator.pushNamed(context, '/profile');
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return BottomAppBar(
+      padding: EdgeInsets.all(12),
       shape: CircularNotchedRectangle(),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: <Widget>[
           IconButton(
-            icon: Icon(Icons.home),
+            icon: Icon(CupertinoIcons.house, size: 30),
             onPressed: () {
               Navigator.pushNamed(context, '/home');
             },
           ),
           IconButton(
-            icon: Icon(Icons.person),
+            icon: Icon(Icons.add_box_outlined, size: 30),
+            onPressed: () {
+              MyButtomSheet.showButtomSheet(context);
+            },
+          ),
+          IconButton(
+            icon: Icon(CupertinoIcons.person, size: 30),
             onPressed: () {
               Navigator.pushNamed(context, '/profile');
             },
