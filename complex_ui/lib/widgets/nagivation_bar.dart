@@ -1,4 +1,4 @@
-import 'package:complex_ui/screens/create_post_screen.dart';
+import 'package:complex_ui/widgets/create_post_sheet.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -17,7 +17,7 @@ class _NavBarState extends State<NavBar> {
       shape: CircularNotchedRectangle(),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: <Widget>[
+        children: [
           IconButton(
             icon: Icon(CupertinoIcons.house, size: 30),
             onPressed: () {

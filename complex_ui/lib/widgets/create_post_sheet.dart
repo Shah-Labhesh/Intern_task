@@ -12,6 +12,28 @@ class MyButtomSheet {
             child: Column(
               children: [
                 // ImagePicker(),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Container(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Text(
+                          "Insert Image/video",
+                          style: TextStyle(fontSize: 16),
+                        ),
+                        IconButton(
+                          onPressed: () => Navigator.pop(context),
+                          icon: Icon(
+                            Icons.insert_photo_outlined,
+                            size: 30,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+
                 TextFormField(
                   decoration: InputDecoration(
                     label: Text("Caption..."),
