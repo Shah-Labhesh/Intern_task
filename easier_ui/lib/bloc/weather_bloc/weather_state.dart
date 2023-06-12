@@ -2,13 +2,16 @@
 import 'package:easier_ui/data/models/forecast.dart';
 import 'package:easier_ui/data/models/weather.dart';
 
-abstract class WeatherState {}
+abstract class WeatherState {
+  String get location => 'Nepal';
+}
 
 class InitialWeatherState extends WeatherState {}
 
 class LoadingWeatherState extends WeatherState {}
 
 class SuccessWeatherState extends WeatherState {
+  @override
   String location;
   Weather weather;
   Forecast forecast;

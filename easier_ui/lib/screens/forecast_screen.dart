@@ -1,17 +1,96 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-class ForecastScreen extends StatelessWidget {
-  const ForecastScreen({super.key});
+import '../bloc/weather_bloc/weather_bloc.dart';
+import '../bloc/weather_bloc/weather_event.dart';
+import '../bloc/weather_bloc/weather_state.dart';
+import '../widgets/forecast_item.dart';
 
+class ForecastScreen extends StatefulWidget {
+  const ForecastScreen({Key? key}) : super(key: key);
+
+  @override
+  State<ForecastScreen> createState() => _ForecastScreenState();
+}
+
+class _ForecastScreenState extends State<ForecastScreen> {
+  String degreeSymbol = String.fromCharCode(0x00B0);
+  late String day = '';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Text("Forecast page"),
+      backgroundColor: Color(0xFF42C6FF),
+      appBar: AppBar(
+        leading: IconButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            icon: Icon(Icons.arrow_back_ios_new)),
+        iconTheme: IconThemeData(color: Colors.black),
+        title: Text(
+          "Weather forecast",
+          style: TextStyle(color: Colors.black, fontWeight: FontWeight.w700),
+        ),
+        centerTitle: true,
+        elevation: 0,
+        backgroundColor: Color(0xFF42C6FF),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () => Navigator.pop(context),
-        child: Icon(Icons.arrow_forward_ios_outlined),
+      body: SafeArea(
+        child: BlocConsumer<WeatherBloc, WeatherState>(
+          listener: (context, state) {
+            if (state is ErrorWeatherState) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text(
+                    state.errorMessage,
+                  ),
+                ),
+              );
+            }
+          },
+          builder: (context, state) {
+            if (state is SuccessWeatherState) {
+              DateTime now = DateTime.now();
+
+              final list = state.forecast.weatherList;
+              return ListView.builder(
+                itemCount: list.length,
+                itemBuilder: (context, index) {
+                  final data = list[index];
+                  if (index == 0) {
+                    day = 'Today';
+                  } else if (index == 1) {
+                    day = 'Tomorrow';
+                  }
+                  return ForecastWidget(
+                      day: day,
+                      now: now,
+                      data: data,
+                      degreeSymbol: degreeSymbol,
+                      index: index);
+                },
+              );
+            } else if (state is ErrorWeatherState) {
+              return Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(state.errorMessage),
+                  ElevatedButton(
+                    onPressed: () {
+                      BlocProvider.of<WeatherBloc>(context, listen: false)
+                          .add(FetchWeatherEvent());
+                    },
+                    child: Text('Try again'),
+                  ),
+                ],
+              );
+            } else {
+              return Center(
+                child: CircularProgressIndicator(),
+              );
+            }
+          },
+        ),
       ),
     );
   }
