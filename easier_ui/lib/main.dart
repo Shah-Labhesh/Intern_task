@@ -15,10 +15,6 @@ class MyApp extends StatelessWidget {
     return BlocProvider(
       create: (context) => WeatherBloc(),
       child: MaterialApp(
-        theme: ThemeData(
-          primarySwatch: Colors.grey,
-          scaffoldBackgroundColor: Colors.white,
-        ),
         debugShowCheckedModeBanner: false,
         initialRoute: '/weather',
         routes: {

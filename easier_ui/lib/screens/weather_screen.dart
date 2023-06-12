@@ -14,7 +14,6 @@ class WeatherScreen extends StatefulWidget {
 
 class _WeatherScreenState extends State<WeatherScreen> {
   String degreeSymbol = String.fromCharCode(0x00B0);
-
   @override
   void initState() {
     super.initState();
@@ -38,16 +37,15 @@ class _WeatherScreenState extends State<WeatherScreen> {
             },
             builder: (context, state) {
               if (state is SuccessWeatherState) {
+                DateTime now = DateTime.now();
+
                 final data = state.forecast.weatherList[0];
                 return Center(
                   child: Container(
                     height: MediaQuery.of(context).size.height,
                     width: MediaQuery.of(context).size.width,
                     decoration: BoxDecoration(
-                      image: DecorationImage(
-                        image: AssetImage('assets/images/bg2.png'),
-                        fit: BoxFit.cover,
-                      ),
+                      color: Color(0xFF42C6FF),
                     ),
                     child: Stack(
                       alignment: Alignment.bottomCenter,
@@ -57,10 +55,10 @@ class _WeatherScreenState extends State<WeatherScreen> {
                             Padding(
                               padding: const EdgeInsets.all(20.0),
                               child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Icon(
                                     Icons.location_pin,
-                                    color: Colors.white,
                                   ),
                                   SizedBox(
                                     width: 10,
@@ -68,7 +66,6 @@ class _WeatherScreenState extends State<WeatherScreen> {
                                   Text(
                                     state.location,
                                     style: TextStyle(
-                                      color: Colors.white,
                                       fontSize: 28,
                                       fontWeight: FontWeight.w400,
                                     ),
@@ -76,26 +73,66 @@ class _WeatherScreenState extends State<WeatherScreen> {
                                 ],
                               ),
                             ),
+                            Container(
+                                alignment: Alignment.center,
+                                height: 30,
+                                width: 140,
+                                decoration: BoxDecoration(
+                                  color: Colors.black,
+                                  borderRadius: BorderRadius.all(
+                                    Radius.circular(
+                                      10,
+                                    ),
+                                  ),
+                                ),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
+                                  children: [
+                                    Icon(
+                                      CupertinoIcons.calendar_today,
+                                      color: Colors.white,
+                                    ),
+                                    Text(
+                                      '${now.year}-${now.month}-${now.day}',
+                                      style: TextStyle(
+                                          color: Colors.white, fontSize: 18),
+                                    ),
+                                  ],
+                                )),
+                            SizedBox(
+                              height: 50,
+                            ),
                             Padding(
-                              padding:
-                                  const EdgeInsets.only(top: 40, right: 40),
-                              child: Text(
-                                "Temperature  " +
+                              padding: const EdgeInsets.only(top: 50),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    "Temperature ",
+                                    style: TextStyle(
+                                        // color: Colors.white,
+                                        fontWeight: FontWeight.w400,
+                                        fontSize: 50),
+                                  ),
+                                  Text(
                                     data.temperature.toString() +
-                                    degreeSymbol +
-                                    "C",
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.w400,
-                                    fontSize: 34),
+                                        degreeSymbol +
+                                        "C",
+                                    style: TextStyle(
+                                        // color: Colors.white,
+                                        fontWeight: FontWeight.w400,
+                                        fontSize: 80),
+                                  )
+                                ],
                               ),
                             ),
                           ],
                         ),
                         Container(
-                          height: 270,
+                          height: 330,
                           width: MediaQuery.of(context).size.width,
-                          decoration: BoxDecoration(color: Colors.white),
+                          // decoration: BoxDecoration(color: Color(0xFF42C6FF)),
                           child: Column(
                             children: [
                               Padding(
@@ -118,41 +155,132 @@ class _WeatherScreenState extends State<WeatherScreen> {
                                       MainAxisAlignment.spaceEvenly,
                                   children: [
                                     Container(
+                                      padding: EdgeInsets.all(8),
                                       decoration: BoxDecoration(
-                                          color: Colors.white,
-                                          boxShadow: List.filled(
-                                              20,
-                                              BoxShadow(
-                                                  color: Colors.black45,
-                                                  blurRadius: 1.0,
-                                                  blurStyle: BlurStyle.outer))),
-                                      child: Padding(
-                                        padding: const EdgeInsets.all(12.0),
-                                        child: Column(
-                                          children: [
-                                            Icon(CupertinoIcons.sunrise),
-                                            Text(data.sunrise)
-                                          ],
-                                        ),
+                                          border: Border.all(
+                                            color: Colors.black,
+                                            width: 2.0,
+                                          ),
+                                          borderRadius:
+                                              BorderRadius.circular(10)),
+                                      child: Column(
+                                        children: [
+                                          Icon(
+                                            CupertinoIcons.sunrise,
+                                            size: 30,
+                                          ),
+                                          SizedBox(
+                                            height: 10,
+                                          ),
+                                          Text(
+                                            data.sunrise,
+                                            style: TextStyle(fontSize: 16),
+                                          ),
+                                          SizedBox(
+                                            height: 5,
+                                          ),
+                                          Text(
+                                            "Sunrise",
+                                            textScaleFactor: 1.2,
+                                          )
+                                        ],
                                       ),
                                     ),
-                                    Column(
-                                      children: [
-                                        Icon(CupertinoIcons.sunset),
-                                        Text(data.sunset)
-                                      ],
+                                    Container(
+                                      padding: EdgeInsets.all(8),
+                                      decoration: BoxDecoration(
+                                          border: Border.all(
+                                            color: Colors.black,
+                                            width: 2.0,
+                                          ),
+                                          borderRadius:
+                                              BorderRadius.circular(10)),
+                                      child: Column(
+                                        children: [
+                                          Icon(
+                                            CupertinoIcons.sunset,
+                                            size: 30,
+                                          ),
+                                          SizedBox(
+                                            height: 10,
+                                          ),
+                                          Text(
+                                            data.sunset,
+                                            style: TextStyle(fontSize: 16),
+                                          ),
+                                          SizedBox(
+                                            height: 5,
+                                          ),
+                                          Text(
+                                            "Sunset",
+                                            textScaleFactor: 1.2,
+                                          )
+                                        ],
+                                      ),
                                     ),
-                                    Column(
-                                      children: [
-                                        Icon(CupertinoIcons.moon_stars),
-                                        Text(data.moonrise)
-                                      ],
+                                    Container(
+                                      padding: EdgeInsets.all(8),
+                                      decoration: BoxDecoration(
+                                          border: Border.all(
+                                            color: Colors.black,
+                                            width: 2.0,
+                                          ),
+                                          borderRadius:
+                                              BorderRadius.circular(10)),
+                                      child: Column(
+                                        children: [
+                                          Icon(
+                                            CupertinoIcons.moon_stars,
+                                            size: 30,
+                                          ),
+                                          SizedBox(
+                                            height: 10,
+                                          ),
+                                          Text(
+                                            data.moonrise,
+                                            style: TextStyle(fontSize: 16),
+                                          ),
+                                          SizedBox(
+                                            height: 5,
+                                          ),
+                                          Text(
+                                            "Moonrise",
+                                            textScaleFactor: 1.2,
+                                          )
+                                        ],
+                                      ),
                                     ),
-                                    Column(
-                                      children: [
-                                        Icon(CupertinoIcons.moon_zzz),
-                                        Text(data.moonset)
-                                      ],
+                                    Container(
+                                      padding: EdgeInsets.all(8),
+                                      decoration: BoxDecoration(
+                                          border: Border.all(
+                                            color: Colors.black,
+                                            width: 2.0,
+                                          ),
+                                          borderRadius:
+                                              BorderRadius.circular(10)),
+                                      child: Column(
+                                        children: [
+                                          Icon(
+                                            CupertinoIcons.moon_zzz,
+                                            size: 30,
+                                          ),
+                                          SizedBox(
+                                            height: 10,
+                                          ),
+                                          Text(
+                                            data.moonset,
+                                            style: TextStyle(fontSize: 16),
+                                          ),
+                                          SizedBox(
+                                            height: 5,
+                                          ),
+                                          Text(
+                                            "Moonset",
+                                            textScaleFactor: 1.2,
+                                          )
+                                        ],
+                                      ),
                                     ),
                                   ],
                                 ),
@@ -185,9 +313,25 @@ class _WeatherScreenState extends State<WeatherScreen> {
             },
           ),
         ),
-        floatingActionButton: FloatingActionButton(
-          child: Icon(Icons.arrow_forward_ios_outlined),
-          onPressed: (() => Navigator.pushNamed(context, '/forecast')),
+        floatingActionButton: Padding(
+          padding: const EdgeInsets.only(left: 40, right: 20, bottom: 30),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                "Weather forecast",
+                style: TextStyle(fontSize: 22, fontWeight: FontWeight.w600),
+              ),
+              FloatingActionButton(
+                backgroundColor: Colors.white,
+                child: Icon(
+                  Icons.arrow_forward_ios_outlined,
+                  color: Colors.black,
+                ),
+                onPressed: (() => Navigator.pushNamed(context, '/forecast')),
+              ),
+            ],
+          ),
         ));
   }
 }
