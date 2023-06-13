@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
       title: 'Social Media App',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(primarySwatch: Colors.blue),
-      initialRoute: '/home',
+      initialRoute: '/login',
       routes: {
         '/home': (context) => HomeScreen(),
         '/login': (context) => LoginScreen(),
