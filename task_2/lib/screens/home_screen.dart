@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:task_2/bloc/movie_bloc/movie_bloc.dart';
 import 'package:task_2/bloc/movie_bloc/movie_event.dart';
 import 'package:task_2/bloc/movie_bloc/movie_state.dart';
+import 'package:task_2/widgets/movie_card.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -15,11 +16,6 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     super.initState();
     BlocProvider.of<MovieBloc>(context, listen: false).add(FetchMovieEvent());
-  }
-
-  static getImageUrl({required String poster}) {
-    String url = "https://www.themoviedb.org/t/p/w220_and_h330_face";
-    return url + poster;
   }
 
   @override
@@ -65,71 +61,10 @@ class _HomeScreenState extends State<HomeScreen> {
                       itemCount: state.results.length,
                       itemBuilder: (context, index) {
                         final data = state.results[index];
-                        return Card(
-                          margin: EdgeInsets.all(20),
-
-                          // color: Color(0xFFFFFEF2),
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                Container(
-                                  height: 200,
-                                  width: 140,
-                                  decoration: BoxDecoration(
-                                    image: DecorationImage(
-                                      image: NetworkImage(
-                                        getImageUrl(
-                                          poster: data.posterPath,
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                SizedBox(
-                                  width: 140,
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Container(
-                                          child: Text(
-                                        data.originalTitle,
-                                        style: TextStyle(
-                                            fontSize: 22,
-                                            fontWeight: FontWeight.w500),
-                                      )),
-                                      SizedBox(
-                                        height: 5,
-                                      ),
-                                      Text(
-                                        data.releaseDate,
-                                        style: TextStyle(
-                                          fontSize: 16,
-                                          color: Colors.black54,
-                                        ),
-                                      ),
-                                      SizedBox(
-                                        height: 50,
-                                      ),
-                                      ElevatedButton(
-                                        onPressed: null,
-                                        child: Text(
-                                          "view more",
-                                          style: TextStyle(color: Colors.white),
-                                        ),
-                                        style: ButtonStyle(
-                                            backgroundColor:
-                                                MaterialStateProperty.all(
-                                                    Colors.blue[900])),
-                                      )
-                                    ],
-                                  ),
-                                )
-                              ],
-                            ),
-                          ),
+                        return MovieCard(
+                          data: data,
+                          state: state,
+                          index: index,
                         );
                       },
                     ),
