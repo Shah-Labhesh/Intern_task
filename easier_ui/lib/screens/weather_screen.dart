@@ -25,7 +25,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFF42C6FF),
+      backgroundColor: const Color(0xFF42C6FF),
       body: SafeArea(
         child: BlocConsumer<WeatherBloc, WeatherState>(
           listener: (context, state) {
@@ -58,11 +58,11 @@ class _WeatherScreenState extends State<WeatherScreen> {
                         BlocProvider.of<WeatherBloc>(context, listen: false)
                             .add(FetchWeatherEvent());
                       },
-                      child: Text('Try again')),
+                      child: const Text('Try again')),
                 ],
               );
             } else {
-              return Center(
+              return const Center(
                 child: CircularProgressIndicator(),
               );
             }
@@ -74,7 +74,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(
+            const Text(
               "Weather forecast",
               style: TextStyle(fontSize: 22, fontWeight: FontWeight.w600),
             ),

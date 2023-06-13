@@ -5,7 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'screens/forecast_screen.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -18,8 +18,8 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         initialRoute: '/weather',
         routes: {
-          '/forecast': (context) => ForecastScreen(),
-          '/weather': (context) => WeatherScreen(),
+          '/forecast': (context) => const ForecastScreen(),
+          '/weather': (context) => const WeatherScreen(),
         },
       ),
     );

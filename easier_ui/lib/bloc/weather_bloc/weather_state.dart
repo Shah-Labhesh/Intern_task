@@ -27,10 +27,3 @@ class ErrorWeatherState extends WeatherState {
     required this.errorMessage,
   });
 }
-
-// class FutureWeatherState extends WeatherState {
-//   Forecast forecast;
-//   FutureWeatherState({
-//     required this.forecast,
-//   });
-// }

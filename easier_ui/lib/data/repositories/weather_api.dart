@@ -7,7 +7,6 @@ class WeatherAPI {
 
   Future<Forecast> fetchWeatherDetails() async {
     var response = await dio.get(api);
-    print(response.data.runtimeType);
     return Forecast.fromMap(response.data);
   }
 }

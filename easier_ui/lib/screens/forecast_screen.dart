@@ -19,21 +19,21 @@ class _ForecastScreenState extends State<ForecastScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFF42C6FF),
+      backgroundColor: const Color(0xFF42C6FF),
       appBar: AppBar(
         leading: IconButton(
             onPressed: () {
               Navigator.pop(context);
             },
-            icon: Icon(Icons.arrow_back_ios_new)),
-        iconTheme: IconThemeData(color: Colors.black),
-        title: Text(
+            icon: const Icon(Icons.arrow_back_ios_new)),
+        iconTheme: const IconThemeData(color: Colors.black),
+        title: const Text(
           "Weather forecast",
           style: TextStyle(color: Colors.black, fontWeight: FontWeight.w700),
         ),
         centerTitle: true,
         elevation: 0,
-        backgroundColor: Color(0xFF42C6FF),
+        backgroundColor: const Color(0xFF42C6FF),
       ),
       body: SafeArea(
         child: BlocConsumer<WeatherBloc, WeatherState>(
@@ -63,11 +63,12 @@ class _ForecastScreenState extends State<ForecastScreen> {
                     day = 'Tomorrow';
                   }
                   return ForecastWidget(
-                      day: day,
-                      now: now,
-                      data: data,
-                      degreeSymbol: degreeSymbol,
-                      index: index);
+                    day: day,
+                    now: now,
+                    data: data,
+                    degreeSymbol: degreeSymbol,
+                    index: index,
+                  );
                 },
               );
             } else if (state is ErrorWeatherState) {
@@ -80,12 +81,12 @@ class _ForecastScreenState extends State<ForecastScreen> {
                       BlocProvider.of<WeatherBloc>(context, listen: false)
                           .add(FetchWeatherEvent());
                     },
-                    child: Text('Try again'),
+                    child: const Text('Try again'),
                   ),
                 ],
               );
             } else {
-              return Center(
+              return const Center(
                 child: CircularProgressIndicator(),
               );
             }

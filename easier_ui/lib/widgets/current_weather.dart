@@ -1,4 +1,3 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -23,7 +22,7 @@ class WeatherWidget extends StatelessWidget {
     return Container(
       height: MediaQuery.of(context).size.height,
       width: MediaQuery.of(context).size.width,
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         color: Color(0xFF42C6FF),
       ),
       child: Stack(
@@ -36,15 +35,15 @@ class WeatherWidget extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Icon(
+                    const Icon(
                       Icons.location_pin,
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 10,
                     ),
                     Text(
                       state.location,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 28,
                         fontWeight: FontWeight.w400,
                       ),
@@ -53,31 +52,32 @@ class WeatherWidget extends StatelessWidget {
                 ),
               ),
               Container(
-                  alignment: Alignment.center,
-                  height: 30,
-                  width: 140,
-                  decoration: BoxDecoration(
-                    color: Colors.black,
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(
-                        10,
-                      ),
+                alignment: Alignment.center,
+                height: 30,
+                width: 140,
+                decoration: const BoxDecoration(
+                  color: Colors.black,
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(
+                      10,
                     ),
                   ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Icon(
-                        CupertinoIcons.calendar_today,
-                        color: Colors.white,
-                      ),
-                      Text(
-                        '${now.year}-${now.month}-${now.day}',
-                        style: TextStyle(color: Colors.white, fontSize: 18),
-                      ),
-                    ],
-                  )),
-              SizedBox(
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    const Icon(
+                      CupertinoIcons.calendar_today,
+                      color: Colors.white,
+                    ),
+                    Text(
+                      '${now.year}-${now.month}-${now.day}',
+                      style: const TextStyle(color: Colors.white, fontSize: 18),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(
                 height: 50,
               ),
               Padding(
@@ -85,33 +85,32 @@ class WeatherWidget extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
+                    const Text(
                       "Temperature ",
                       style: TextStyle(
-                          // color: Colors.white,
-                          fontWeight: FontWeight.w400,
-                          fontSize: 50),
+                        fontWeight: FontWeight.w400,
+                        fontSize: 50,
+                      ),
                     ),
                     Text(
                       data.temperature.toString() + degreeSymbol + "C",
-                      style: TextStyle(
-                          // color: Colors.white,
-                          fontWeight: FontWeight.w400,
-                          fontSize: 80),
+                      style: const TextStyle(
+                        fontWeight: FontWeight.w400,
+                        fontSize: 80,
+                      ),
                     )
                   ],
                 ),
               ),
             ],
           ),
-          Container(
+          SizedBox(
             height: 330,
             width: MediaQuery.of(context).size.width,
-            // decoration: BoxDecoration(color: Color(0xFF42C6FF)),
             child: Column(
               children: [
-                Padding(
-                  padding: const EdgeInsets.only(top: 20),
+                const Padding(
+                  padding: EdgeInsets.only(top: 20),
                   child: Text(
                     'Astronomical Information',
                     style: TextStyle(
@@ -120,7 +119,7 @@ class WeatherWidget extends StatelessWidget {
                         fontWeight: FontWeight.w700),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 Padding(
@@ -129,7 +128,7 @@ class WeatherWidget extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       Container(
-                        padding: EdgeInsets.all(8),
+                        padding: const EdgeInsets.all(8),
                         decoration: BoxDecoration(
                             border: Border.all(
                               color: Colors.black,
@@ -138,21 +137,21 @@ class WeatherWidget extends StatelessWidget {
                             borderRadius: BorderRadius.circular(10)),
                         child: Column(
                           children: [
-                            Icon(
+                            const Icon(
                               CupertinoIcons.sunrise,
                               size: 30,
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 10,
                             ),
                             Text(
                               data.sunrise,
-                              style: TextStyle(fontSize: 16),
+                              style: const TextStyle(fontSize: 16),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 5,
                             ),
-                            Text(
+                            const Text(
                               "Sunrise",
                               textScaleFactor: 1.2,
                             )
@@ -160,7 +159,7 @@ class WeatherWidget extends StatelessWidget {
                         ),
                       ),
                       Container(
-                        padding: EdgeInsets.all(8),
+                        padding: const EdgeInsets.all(8),
                         decoration: BoxDecoration(
                             border: Border.all(
                               color: Colors.black,
@@ -169,21 +168,21 @@ class WeatherWidget extends StatelessWidget {
                             borderRadius: BorderRadius.circular(10)),
                         child: Column(
                           children: [
-                            Icon(
+                            const Icon(
                               CupertinoIcons.sunset,
                               size: 30,
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 10,
                             ),
                             Text(
                               data.sunset,
                               style: TextStyle(fontSize: 16),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 5,
                             ),
-                            Text(
+                            const Text(
                               "Sunset",
                               textScaleFactor: 1.2,
                             )
@@ -200,21 +199,21 @@ class WeatherWidget extends StatelessWidget {
                             borderRadius: BorderRadius.circular(10)),
                         child: Column(
                           children: [
-                            Icon(
+                            const Icon(
                               CupertinoIcons.moon_stars,
                               size: 30,
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 10,
                             ),
                             Text(
                               data.moonrise,
-                              style: TextStyle(fontSize: 16),
+                              style: const TextStyle(fontSize: 16),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 5,
                             ),
-                            Text(
+                            const Text(
                               "Moonrise",
                               textScaleFactor: 1.2,
                             )
@@ -222,30 +221,33 @@ class WeatherWidget extends StatelessWidget {
                         ),
                       ),
                       Container(
-                        padding: EdgeInsets.all(8),
+                        padding: const EdgeInsets.all(8),
                         decoration: BoxDecoration(
-                            border: Border.all(
-                              color: Colors.black,
-                              width: 2.0,
-                            ),
-                            borderRadius: BorderRadius.circular(10)),
+                          border: Border.all(
+                            color: Colors.black,
+                            width: 2.0,
+                          ),
+                          borderRadius: BorderRadius.circular(
+                            10,
+                          ),
+                        ),
                         child: Column(
                           children: [
-                            Icon(
+                            const Icon(
                               CupertinoIcons.moon_zzz,
                               size: 30,
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 10,
                             ),
                             Text(
                               data.moonset,
-                              style: TextStyle(fontSize: 16),
+                              style: const TextStyle(fontSize: 16),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 5,
                             ),
-                            Text(
+                            const Text(
                               "Moonset",
                               textScaleFactor: 1.2,
                             )

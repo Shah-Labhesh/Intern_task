@@ -16,8 +16,7 @@ class WeatherBloc extends Bloc<WeatherEvent, WeatherState> {
           location: data.country,
           weather: data.weatherList[0],
           forecast: data));
-    } catch (e, s) {
-      print(s.toString());
+    } catch (e) {
       emit(ErrorWeatherState(errorMessage: e.toString()));
     }
   }
