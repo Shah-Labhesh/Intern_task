@@ -13,8 +13,7 @@ class MovieBloc extends Bloc<MovieEvent, MovieState> {
     try {
       var data = await MovieAPI().fetchMovieDetails();
       emit(SuccessHomeState(results: data.results));
-    } catch (e, s) {
-      print(s.toString());
+    } catch (e) {
       emit(ErrorMovieState(errorMessage: e.toString()));
     }
   }

@@ -1,4 +1,3 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:task_2/bloc/movie_bloc/movie_state.dart';
 import 'package:task_2/data/models/results.dart';
@@ -24,8 +23,8 @@ class MovieCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      margin: EdgeInsets.all(20),
-      color: Color(0xFFFFFEF2),
+      margin: const EdgeInsets.all(20),
+      color: const Color(0xFFFFFEF2),
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Row(
@@ -35,6 +34,9 @@ class MovieCard extends StatelessWidget {
               height: 200,
               width: 140,
               decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(
+                  10,
+                ),
                 image: DecorationImage(
                   image: NetworkImage(
                     getImageUrl(
@@ -49,32 +51,25 @@ class MovieCard extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Container(
-                      child: Text(
+                  Text(
                     data.originalTitle,
-                    style: TextStyle(fontSize: 22, fontWeight: FontWeight.w500),
-                  )),
-                  // SizedBox(
-                  //   height: 5,
-                  // ),
-                  // Text(
-                  //   data.releaseDate,
-                  //   style: TextStyle(
-                  //     fontSize: 16,
-                  //     color: Colors.black54,
-                  //   ),
-                  // ),
-                  SizedBox(
+                    style: const TextStyle(
+                        fontSize: 22, fontWeight: FontWeight.w500),
+                  ),
+                  const SizedBox(
                     height: 60,
                   ),
                   GestureDetector(
                     onTap: () {
                       Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) =>
-                                MovieDetailScreen(state: state, index: index),
-                          ));
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => MovieDetailScreen(
+                            state: state,
+                            index: index,
+                          ),
+                        ),
+                      );
                     },
                     child: Container(
                       alignment: Alignment.center,
@@ -86,12 +81,13 @@ class MovieCard extends StatelessWidget {
                           10,
                         ),
                       ),
-                      child: Text(
+                      child: const Text(
                         "View more",
                         style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.w500,
-                            fontSize: 15),
+                          color: Colors.white,
+                          fontWeight: FontWeight.w500,
+                          fontSize: 15,
+                        ),
                       ),
                     ),
                   )

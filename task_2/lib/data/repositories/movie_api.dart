@@ -8,8 +8,6 @@ class MovieAPI {
 
   Future<Movie> fetchMovieDetails() async {
     var response = await dio.get(api);
-    print(response.data.runtimeType);
-    print(response.data);
     return Movie.fromJson(response.data);
   }
 }

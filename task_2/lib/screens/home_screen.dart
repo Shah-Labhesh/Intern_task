@@ -31,15 +31,14 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               );
             }
-            // TODO: implement listener
           },
           builder: (context, state) {
             if (state is SuccessHomeState) {
               return Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.all(16.0),
+                  const Padding(
+                    padding: EdgeInsets.all(16.0),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -78,14 +77,14 @@ class _HomeScreenState extends State<HomeScreen> {
                       BlocProvider.of<MovieBloc>(context, listen: false)
                           .add(FetchMovieEvent());
                     },
-                    child: Text("Try again")),
+                    child: const Text("Try again")),
               );
             } else if (state is LoadingMovieState) {
-              return Center(
+              return const Center(
                 child: CircularProgressIndicator(),
               );
             }
-            return Text("data");
+            return const Text("data");
           },
         ),
       ),

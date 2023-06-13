@@ -26,7 +26,7 @@ class MovieDetailScreen extends StatelessWidget {
         ),
         centerTitle: true,
         elevation: 0,
-        backgroundColor: Color.fromARGB(200, 0, 0, 0),
+        backgroundColor: const Color.fromARGB(200, 0, 0, 0),
       ),
       body: ListView(
         children: [
@@ -34,59 +34,86 @@ class MovieDetailScreen extends StatelessWidget {
             height: MediaQuery.of(context).size.height * 0.7,
             decoration: BoxDecoration(
               image: DecorationImage(
-                  image: NetworkImage(
-                    getImageUrl(
-                      poster: data.posterPath,
-                    ),
+                image: NetworkImage(
+                  getImageUrl(
+                    poster: data.posterPath,
                   ),
-                  fit: BoxFit.cover),
+                ),
+                fit: BoxFit.cover,
+              ),
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(top: 22, right: 22, left: 22),
+            padding: const EdgeInsets.only(
+              top: 22,
+              right: 22,
+              left: 22,
+            ),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Container(
+                SizedBox(
                   width: 240,
                   child: Text(
                     data.originalTitle,
-                    style: TextStyle(fontSize: 26, fontWeight: FontWeight.w600),
+                    style: const TextStyle(
+                      fontSize: 26,
+                      fontWeight: FontWeight.w600,
+                    ),
                   ),
                 ),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
-                    Text(
+                    const Text(
                       "Released Date",
-                      style: TextStyle(color: Colors.black54, fontSize: 16),
+                      style: TextStyle(
+                        color: Colors.black54,
+                        fontSize: 16,
+                      ),
                     ),
                     Text(
                       data.releaseDate,
-                      style: TextStyle(color: Colors.black54, fontSize: 16),
+                      style: const TextStyle(
+                        color: Colors.black54,
+                        fontSize: 16,
+                      ),
                     ),
                   ],
                 )
               ],
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.only(left: 22, top: 10),
+          const Padding(
+            padding: EdgeInsets.only(
+              left: 22,
+              top: 10,
+            ),
             child: Text(
               "Overview",
-              style: TextStyle(fontSize: 22, fontWeight: FontWeight.w500),
+              style: TextStyle(
+                fontSize: 22,
+                fontWeight: FontWeight.w600,
+              ),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
           Padding(
-            padding: const EdgeInsets.only(left: 22, right: 22, bottom: 22),
+            padding: const EdgeInsets.only(
+              left: 22,
+              right: 22,
+              bottom: 22,
+            ),
             child: Text(
               data.overview,
               textAlign: TextAlign.justify,
-              style: TextStyle(color: Colors.black54, fontSize: 16),
+              style: const TextStyle(
+                color: Colors.black54,
+                fontSize: 16,
+              ),
             ),
           )
         ],
