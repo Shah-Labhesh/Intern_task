@@ -1,7 +1,14 @@
 {
     "users": [
       {
-        "id": 1,
+        "id":1,
+        "name":"Labhesh",
+        "email":"labhesh@gmail.com",
+        "password":"labhesh123",
+        "posts":[]
+      },
+      {
+        "id": 2,
         "name": "Ankush",
         "email": "ankush@gmail.com",
         "password": "ankush123",
@@ -19,7 +26,7 @@
         ]
       },
       {
-        "id": 2,
+        "id": 3,
         "name": "Roshan",
         "email": "Roshan@gmail.com",
         "password": "Roshan123",
@@ -32,15 +39,17 @@
         ]
       },
       {
-        "id": 3,
+        "id": 4,
         "name": "Bishal",
         "email": "bishal@gmail.com",
         "password": "bishal123",
-        "posts": [{
+        "posts": [
+          {
           "id": 4,
           "caption": "Sed at ipsum quis neque interdum tincidunt. ",
           "image": "https://coreldrawdesign.com/resources/previews/preview-grow-your-business-social-media-post-and-banner-template-premium-vector-1637332009.jpg"
-        }]
+          }
+        ]
       }
     ]
   }

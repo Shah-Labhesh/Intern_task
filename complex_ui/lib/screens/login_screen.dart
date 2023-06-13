@@ -22,8 +22,8 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   void initState() {
-    fetchUserData();
     super.initState();
+    fetchUserData();
   }
 
   fetchUserData() async {
@@ -32,13 +32,11 @@ class _LoginScreenState extends State<LoginScreen> {
     var userData = data["users"];
     UserModel.user =
         List.from(userData).map((user) => Users.fromJson(user)).toList();
-
-    print(UserModel.user.length);
   }
 
   void loginValidate() async {
-    String email = _controller1.text.toLowerCase();
-    String password = _controller2.text;
+    String email = _controller1.text.toLowerCase().trim();
+    String password = _controller2.text.trim();
 
     if (_formKey.currentState!.validate()) {
       setState(() {
@@ -46,12 +44,8 @@ class _LoginScreenState extends State<LoginScreen> {
       });
       for (var user in UserModel.user) {
         if (email == user.email.toLowerCase().toString()) {
-          print(email);
-          print(user.email);
-          print(password);
-          print(user.password);
           if (password == user.password) {
-            await Future.delayed(Duration(seconds: 2));
+            await Future.delayed(const Duration(seconds: 2));
             Navigator.pushNamed(context, '/home');
             _controller1.clear();
             _controller2.clear();
@@ -66,7 +60,7 @@ class _LoginScreenState extends State<LoginScreen> {
         change = false;
       });
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
+        const SnackBar(
           content: Text(
             "Incorrect email or password",
           ),
@@ -94,7 +88,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
-                        Text(
+                        const Text(
                           "Don't have an account? ",
                           style: TextStyle(
                             color: Colors.white,
@@ -133,8 +127,8 @@ class _LoginScreenState extends State<LoginScreen> {
                   decoration: BoxDecoration(
                     color: Colors.blue[900],
                   ),
-                  child: Padding(
-                    padding: const EdgeInsets.only(bottom: 140),
+                  child: const Padding(
+                    padding: EdgeInsets.only(bottom: 140),
                     child: Center(
                       child: Text(
                         "Social Media",
@@ -151,7 +145,7 @@ class _LoginScreenState extends State<LoginScreen> {
             Container(
               height: MediaQuery.of(context).size.height / 1.8,
               width: MediaQuery.of(context).size.width,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(
@@ -168,7 +162,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   key: _formKey,
                   child: Column(
                     children: [
-                      Text(
+                      const Text(
                         "Welcome Back",
                         style: TextStyle(
                           color: Colors.black,
@@ -176,17 +170,17 @@ class _LoginScreenState extends State<LoginScreen> {
                           fontWeight: FontWeight.w600,
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 5,
                       ),
-                      Text(
+                      const Text(
                         "Enter your details below",
                         style: TextStyle(
                           color: Colors.black45,
                           fontSize: 16,
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
                       TextFormField(
@@ -196,21 +190,21 @@ class _LoginScreenState extends State<LoginScreen> {
                             borderRadius: BorderRadius.circular(
                               20,
                             ),
-                            borderSide: BorderSide(
+                            borderSide: const BorderSide(
                               color: Colors.black26,
                             ),
                           ),
-                          label: Text(
+                          label: const Text(
                             "Email",
                           ),
-                          labelStyle: TextStyle(
-                            color: const Color.fromARGB(154, 0, 0, 0),
+                          labelStyle: const TextStyle(
+                            color: Color.fromARGB(154, 0, 0, 0),
                             fontSize: 18,
                             fontWeight: FontWeight.w400,
                           ),
                           hintText: "shahlabhesh@gmail.com",
-                          hintStyle: TextStyle(
-                            color: const Color.fromARGB(154, 0, 0, 0),
+                          hintStyle: const TextStyle(
+                            color: Color.fromARGB(154, 0, 0, 0),
                             fontSize: 18,
                             fontWeight: FontWeight.w400,
                           ),
@@ -224,7 +218,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           return null;
                         },
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
                       Stack(
@@ -238,21 +232,21 @@ class _LoginScreenState extends State<LoginScreen> {
                                 borderRadius: BorderRadius.circular(
                                   20,
                                 ),
-                                borderSide: BorderSide(
+                                borderSide: const BorderSide(
                                   color: Colors.black26,
                                 ),
                               ),
-                              label: Text(
+                              label: const Text(
                                 "Password",
                               ),
-                              labelStyle: TextStyle(
-                                color: const Color.fromARGB(154, 0, 0, 0),
+                              labelStyle: const TextStyle(
+                                color: Color.fromARGB(154, 0, 0, 0),
                                 fontSize: 18,
                                 fontWeight: FontWeight.w400,
                               ),
                               hintText: "********",
-                              hintStyle: TextStyle(
-                                color: const Color.fromARGB(154, 0, 0, 0),
+                              hintStyle: const TextStyle(
+                                color: Color.fromARGB(154, 0, 0, 0),
                                 fontSize: 18,
                                 fontWeight: FontWeight.w400,
                               ),
@@ -273,11 +267,11 @@ class _LoginScreenState extends State<LoginScreen> {
                                 });
                               },
                               icon: _hide
-                                  ? Icon(Icons.visibility)
-                                  : Icon(Icons.visibility_off))
+                                  ? const Icon(Icons.visibility)
+                                  : const Icon(Icons.visibility_off))
                         ],
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 30,
                       ),
                       InkWell(
@@ -285,7 +279,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           loginValidate();
                         },
                         child: AnimatedContainer(
-                          duration: Duration(seconds: 2),
+                          duration: const Duration(seconds: 2),
                           height: 60,
                           width: change ? 200 : 360,
                           child: Center(

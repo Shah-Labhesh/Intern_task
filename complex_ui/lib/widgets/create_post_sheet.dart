@@ -5,44 +5,40 @@ class MyButtomSheet {
     showModalBottomSheet<void>(
       context: context,
       builder: (BuildContext context) {
-        return Container(
+        return SizedBox(
           height: MediaQuery.of(context).size.height / 3,
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Column(
               children: [
-                // ImagePicker(),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: Container(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        Text(
-                          "Insert Image/video",
-                          style: TextStyle(fontSize: 16),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      const Text(
+                        "Insert Image/video",
+                        style: TextStyle(fontSize: 16),
+                      ),
+                      IconButton(
+                        onPressed: () => Navigator.pop(context),
+                        icon: const Icon(
+                          Icons.insert_photo_outlined,
+                          size: 30,
                         ),
-                        IconButton(
-                          onPressed: () => Navigator.pop(context),
-                          icon: Icon(
-                            Icons.insert_photo_outlined,
-                            size: 30,
-                          ),
-                        ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
                 ),
-
                 TextFormField(
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     label: Text("Caption..."),
                     border: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.black45, width: 2),
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 Row(
@@ -61,10 +57,16 @@ class MyButtomSheet {
                         ),
                       ),
                       style: ButtonStyle(
-                          backgroundColor: MaterialStateProperty.all(
-                            Colors.white,
+                        backgroundColor: MaterialStateProperty.all(
+                          Colors.white,
+                        ),
+                        fixedSize: MaterialStateProperty.all(
+                          const Size(
+                            180,
+                            50,
                           ),
-                          fixedSize: MaterialStateProperty.all(Size(180, 50))),
+                        ),
+                      ),
                     ),
                     ElevatedButton(
                       onPressed: null,
@@ -76,7 +78,8 @@ class MyButtomSheet {
                           backgroundColor: MaterialStateProperty.all(
                             Colors.blue[900],
                           ),
-                          fixedSize: MaterialStateProperty.all(Size(180, 50))),
+                          fixedSize:
+                              MaterialStateProperty.all(const Size(180, 50))),
                     ),
                   ],
                 )
